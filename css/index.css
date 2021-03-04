@@ -1,9 +1,592 @@
-.contenedor {
-    background: #000;
-    width: 400px;
-    height: 400px;
-    margin : 0 auto;
+/*
+    texto claro #777
+    fuente principal 'Playfair Display', serif;
+    fuente secundari 'Poppins', serif;
+*/
+* {
+    margin : 0;
+    padding : 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
-.contenedor h1 {
-    color: #fff;
+body {
+    font-size: 16px;
+    font-family: 'Poppins', serif;
+}
+.contenedor {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+img {
+    vertical-align: top;
+    max-width : 100%;
+}
+a {
+    text-decoration: none;
+    /*quitar el subrayado alos enlaces*/
+    color:black;
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+    /*los tres de arriba donde los dos primeros son de navegadores antiguos
+    haces exatamente lo mismo que hace que el cambio de color 
+    del enlace al colocar el mouse sobre el no sea brusco*/
+}
+a:hover
+{color : grey}
+/*el color que tendra el enlace l colocar le mouse*/
+.titulo h2{
+    font-size: 3.125rem;
+    font-weight: 400;
+    line-height: 3.6875rem;
+    margin-bottom: 1.125rem;
+    font-style: italic;
+    letter-spacing: -0.02em;
+}
+.titulo p{
+    font-size: 1.25rem;
+    color: #777;
+}
+/* estilos para el header */
+header .menu-para-pc {
+    background: white;
+    width: 100%;  
+    position : fixed;
+    /*manenerlo en su lugar siempre*/
+    z-index: 99;
+    /*muestre por ensima de los demas nodos mientras deslizamos el scroll bar*/
+    top : 0;
+    /* otra vez siempre arriba*/
+    padding: 0 2.25rem;
+    /*un espacio entre el borde del div y su contenido de 0 arriba y abao y 2.25rem a las derecha e izquierda
+    toma el body font-size 16 entre 36 saliendo 2.25, 
+    para despues solo cambiar el 16 para cambiar el tama;o de la pagina*/
+    display: flex;
+    /*mostrar los elementos puedan colocarse uno a lado de otro
+    ademas, flex y responsive, osea que se adapta*/
+    flex-direction: row;
+    /*hacer que los elementos se orden horizontalmente o en una fila*/
+    justify-content: space-between;
+    /* coloca a los elementos separados de forma simetrica, si hay 2 mitad, si hay 3, entren tres espacios*/
+    min-height: 5.875rem;
+    /*altura minima del 5.875rem*/
+    align-items: center;
+    /*alinea cada elemento en centro vertical*/
+    border-bottom: 1px solid grey;
+    /*un borde en la parte baja del header*/
+}
+header .menu-para-pc .logo {
+    max-width: 3.125rem;
+}
+header .menu-para-pc .menu-principal a {
+    padding: 0 0.5625rem;
+}
+header .menu-para-pc .top-redes a{
+    padding: 0 0.5625rem;
+}
+header .menu-para-movil {
+    background: white;
+    width: 100%;  
+    position : fixed;
+    z-index: 99;
+    top : 0;
+    padding: 0 2.25rem;
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 5.875rem;
+    align-items: center;
+    border-bottom: 1px solid grey;
+}
+header .menu-para-movil .logo {
+    max-width: 3.125rem;
+}
+header .menu-para-movil .burguer-menu {
+    cursor: pointer;
+    font-size: 2.1875rem;
+}
+header .menu-para-movil .slide-menu {
+    position: fixed;
+    top: 5.875rem;
+    left: -80%;
+    background: white;
+    text-align: center;
+    padding: 1.25rem, 2.25rem;
+    width: 80%;
+    border-bottom: 1px solid grey;
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+header .menu-para-movil .slide-menu.activo {
+    left: 0;
+}
+header .menu-para-movil .slide-menu .top-redes{
+    margin-bottom: 0.625rem;
+}
+header .menu-para-movil .slide-menu .top-redes a{
+    padding: 0 0.5625rem;
+}
+header .menu-para-movil .slide-menu .menu-principal a{
+    display: block;
+    padding: 0.625rem 0;
+    border-top: 1px solid grey;
+}
+body .principal {
+    margin-top: 5.875rem;
+    /*comienza desde una distancia de 5.875 de top, la misma que el min-height de header;*/
+}
+body .principal .portada {
+    display: flex;
+    flex-wrap: wrap;/*
+    /*su valor por defecto el nowrap que hace que los elementos dentro sean responsive y se molden,
+    , pero con wrap los elementos dentro cumple con sus estilos dados y si no alcanza espacio ,
+    se continua en troa fila o columna, dependiendo de la direccion del flex*/
+    justify-content: space-between;
+    /*esto no tiene efecto por que los elementos estan ocupando el 100%,
+    si los editamos se arregla*/
+}
+body .principal .portada .columna {
+    width: 50%;
+    background: black;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+}
+body .principal .portada .columna .foto {
+    background-size: cover;
+    background-position: center;
+    width: 50%;
+}
+body .principal .portada .columna .izquierda {
+    background-image: url('../img/portada-1.jpg');
+    background-position: left;
+}
+body .principal .portada .columna .derecha {
+    background-image:url('../img/portada-4.jpg');
+    opacity:0.8
+}
+body .principal .portada .columna .texto {
+    width: 50%;
+    padding: 3.375rem;
+}
+body .principal .portada .columna .texto h2{
+    font-size: 1.8125rem;
+    font-weight: 400;
+    line-height: 2.6875rem;
+    margin-bottom: 1.125rem;
+}
+body .principal .portada .columna .texto p{
+    font-size: 0.9375rem;
+    line-height: 1.75rem;
+}
+body .principal .portada .columna .foto_full {
+    width: 100%;
+    min-height: 15.25rem;
+    background-size: cover;
+    background-position: center;
+}
+body .principal .portada .columna .foto_full.izquierda{
+    background-image: url('../img/portada-2.jpg');
+    opacity: 0.8;
+}
+body .principal .portada .columna .foto_full.derecha{
+    background-image: url('../img/portada-3.jpg');
+    opacity: 0.8;
+}
+body .principal .nosotros {
+    padding: 5.625rem 0;
+}
+body .principal .nosotros .contenedor{
+    display: flex;
+    display: row;
+    flex-wrap: wrap;
+}
+body .principal .nosotros .contenedor .columna.izquierda{
+    width: 30%;
+    border-right: 1px solid grey;
+    display: flex;
+    align-items: center;
+    padding-right: 5%;
+}
+body .principal .nosotros .contenedor .columna.derecha{
+    width: 70%;
+    padding-left: 5%;
+}
+body .principal .nosotros .contenedor .columna.derecha .texto p{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    color: #777;
+}
+body .principal .nuestro_chef {
+    background : black;
+    padding: 5.625rem 0;
+}
+body .principal .nuestro_chef .contenedor{
+    display: flex;
+    display: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+body .principal .nuestro_chef .contenedor .columna{
+    width: 50%;
+    overflow: hidden;
+}
+body .principal .nuestro_chef .contenedor .columna .titulo {
+    padding: 3.125rem;
+    padding-right: 0;
+}
+body .principal .nuestro_chef .contenedor .columna .titulo h2{
+    color: white;
+}
+body .principal .nuestro_chef .contenedor .columna .titulo p{
+    color: fade(white, 70%);
+    padding-bottom: 1.25rem;
+    font-size: 1.125rem;
+    line-height: 1.75;
+}
+body .principal .nuestro_chef .contenedor .columna .titulo p:last-child{
+    padding-bottom: 0;
+}
+body .principal .nuestro_chef .contenedor .columna .izquierda{
+    box-shadow: 0px 9px 32px -1px rgba(0,0,0,0.5);
+}
+body .principal .nuestro_chef .contenedor .columna .slider{
+    width: 300%;
+    /*se coloca 300 por que se usaran 3 fotos, si se necesita mas
+    aumenta de 100 en 100*/
+    display: flex;
+}
+body .principal .nuestro_chef .contenedor .columna .slider .slide{
+    width: 100%;
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+}
+body .principal .nuestro_chef .contenedor .columna .slider .slide.foto1{
+    background-image: url('../img/chef-1.jpg');
+}
+body .principal .nuestro_chef .contenedor .columna .slider .slide.foto2{
+    background-image: url('../img/chef-2.jpg');
+}
+body .principal .nuestro_chef .contenedor .columna .slider .slide.foto3{
+    background-image: url('../img/chef-3.jpg');
+}
+body .principal .nuestro_menu {
+    padding: 5.625rem 0;
+}
+body .principal .nuestro_menu .contenedor .titulo h2{
+    text-align: center;
+}
+body .principal .nuestro_menu .contenedor .menu{
+    margin-top: 2.5rem;
+}
+body .principal .nuestro_menu .contenedor .menu .encabezado{
+    font-weight: 600;
+    font-family: 'Poppins', serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    list-style: none;
+    /*ya que hay es una lista con le quitamos el estilo predeterminado que tiene*/
+    display: flex;
+    /*utilizamos l flex para que cada elemento de la lista se coloque uno de lado del otro*/
+    justify-content: center;
+}
+body .principal .nuestro_menu .contenedor .menu .encabezado li a {
+    font-size: 0.75rem;
+    padding : 0 1.4375rem 1.125rem 1.4375rem;
+    display: block;
+    /*definirlos como bloques para que asi funcione el padding*/
+    cursor: pointer;
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+    border-bottom: 2px solid transparent;
+}
+body .principal .nuestro_menu .contenedor .menu .encabezado li a:hover {
+   color:gold
+}
+body .principal .nuestro_menu .contenedor .menu .encabezado li.activo a {
+    color:gold;
+    border-bottom: 2px solid gold;
+ }
+body .principal .nuestro_menu .contenedor .menu .contenido{
+    max-width: 50rem;
+    margin : 0 auto;
+    margin-top: 2.5 rem;
+    border: 6px double grey;
+    padding: 0 2.25rem;
+ }
+body .principal .nuestro_menu .contenedor .menu .contenido>div{
+    /*el > hace que todos los hijos de la clase contenido que sean div esten ocultos*/
+    display: none;
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+body .principal .nuestro_menu .contenedor .menu .contenido .activo{
+    display: block;
+    /*hara que se muestre el div con la clase activo*/
+}
+body .principal .nuestro_menu .contenedor .menu .contenido .item{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items:  center;
+    padding: 2.25rem 0;
+    border-bottom: 1px solid grey;
+}
+body .principal .nuestro_menu .contenedor .menu .contenido .item .columna_izquierda {
+    width: 70%;
+}
+body .principal .nuestro_menu .contenedor .menu .contenido .item .columna_izquierda h3 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.625rem;
+}
+body .principal .nuestro_menu .contenedor .menu .contenido .item .columna_izquierda p {
+    font-size: 1rem;
+    color: #777;
+}
+body .principal .nuestro_menu .contenedor .menu .contenido .item .columna_derecha {
+    width: 30%;
+    text-align: center;
+    font-size: 2.1875rem;
+}
+body .principal .contacto .datos{
+    padding: 5.625rem 0 11.875rem 0;
+    position: relative;
+    background-image: url('../img/contacto-bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+body .principal .contacto .datos .overlay{
+    position: absolute;
+    /*la posicion es absolua por que fue relativa en la clase padre,
+    o tal vez la clase padre es relativa por que es absoluta en la hija*/
+    width: 100%;
+    height: 100%;
+    background: fade(black, 30%);
+    top : 0;
+    z-index: 1;
+}
+body .principal .contacto .datos .contenedor{
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+body .principal .contacto .datos .contenedor .blurb{
+    background: white;
+    border : 6px double grey;
+    padding : 2.25rem;
+    text-align: center;
+    width: 25%;
+}
+body .principal .contacto .datos .contenedor .blurb h3{
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 2.6875rem;
+    margin-bottom: 1.125rem;
+    border-bottom: 1px solid grey;
+}
+body .principal .contacto .datos .contenedor .blurb p{
+    font-size: 1rem;
+    color : #777;
+}
+body .principal .contacto .formulario {
+    position: relative;
+    z-index: 3;
+    background: white;
+    max-width: 40.625rem;
+    margin : 0 auto;
+    padding: 2.25rem;
+    margin-top: -6.25rem;
+    width: 90%;
+}
+body .principal .contacto .formulario .formulario_contacto .input-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+body .principal .contacto .formulario .formulario_contacto .input-group input[type="text"],input[type="email"],textarea{
+    font-family: 'Poppins', serif;
+    font-size: 1rem;
+    color : black;
+    width: 100%;
+    outline : none;
+    padding: 0.9375rem 0;
+    background : none;
+    border: none;
+    border-bottom: 2px solid fade(gold,50%);
+    vertical-align: top;
+}
+body .principal .contacto .formulario .formulario_contacto .input-group input[type="text"]:focus,input[type="email"]:focus,textarea:focus{
+    border-bottom: 2px solid gold;
+}
+body .principal .contacto .formulario .formulario_contacto .input-group textarea{
+    max-width: 100%;
+    max-height: 10.25rem;
+    min-height: 5.125rem;
+    min-width: 100%;
+}
+body .principal .contacto .formulario .formulario_contacto .input-group label{
+    color : #777;
+    font-family: 'Poppins', serif;
+}
+body .principal .contacto .formulario .formulario_contacto .input-group .label{
+    position : absolute;
+    top : 1rem;
+    left : 0;
+    font-size: 1rem;
+    line-height: 1rem;
+    margin-left: 1rem;
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+body .principal .contacto .formulario .formulario_contacto .input-group .label.activo{
+    top : -0.75rem;
+    margin-left: 0;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+    color : #777;
+}
+body .principal .contacto .formulario .formulario_contacto .input-group .error {
+    position: absolute;
+    color : rgb(255,59,59);
+    font-family: 'Poppins', serif;
+    font-size: 0.875rem;
+}
+body .principal .contacto .formulario .formulario_contacto input[type="submit"]{
+    font-family:'Poppins', serif;
+    background: goldenrod;
+    color:white;
+    border-radius: 1px;
+    border: 2px solid white;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    margin-top: 3.125rem;
+    padding: 0.9375rem;
+    width: 20%;
+    outline: none;
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+body .principal .contacto .formulario .formulario_contacto input[type="submit"]:hover{
+    background: darken(goldenrod, 10%);
+}
+body .principal footer{
+    margin-top: 2.25rem;
+    background: black;
+    padding: 5.625rem 0;
+    text-align: center;
+    color: white;
+}
+body .principal footer .bottom-redes{
+    margin-top: 2.25rem;
+}
+body .principal footer .bottom-redes a {
+    padding: 0 0.5625rem;
+    color: white;
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+body .principal footer .bottom-redes a:hover{
+    color:goldenrod
+}
+@media all and (max-width: 1500px){
+    body .principal .portada .columna .texto {
+        padding-left: 2.25rem;
+        padding-right: 2.25rem;
+    }
+}
+@media all and (max-width: 1199px){
+    body .principal .portada .columna .foto {
+        display: none;
+    }
+    body .principal .portada .columna .texto {
+        width: 100%;
+    }
+}
+@media all and (max-width: 980px){
+    body .principal .nosotros .contenedor .columna.izquierda {
+        width:100%;
+        border-right: none;
+        border-bottom: 1px solid grey;
+        text-align: center;
+        display: block;
+        padding: 0;
+        margin-bottom: 2.25rem;
+    }
+    body .principal .nosotros .contenedor .columna.derecha {
+        width: 100%;
+        padding-left: 0;
+        text-align: justify;
+    }
+    body .principal .contacto .datos .contenedor .blurb {
+        width: 100%;
+        max-width: 40.625rem;
+        margin: 0 auto;
+        margin-bottom: 2.25rem;
+
+    }
+    body .principal .contacto .datos .contenedor .blurb:last-child {
+        margin-bottom: 0;
+    }
+}
+@media all and (max-width: 800px){
+    header .menu-para-pc {
+        display: none
+    }
+    header .menu-para-movil {
+        display: flex;
+    }
+    body .principal .portada .columna {
+        width: 100%;
+    }
+    body .principal .portada .columna .foto_full.izquierda{
+        display: none;
+    }
+    body .principal .portada .columna .texto h2{
+        text-align: center;
+    }
+    body .principal .portada .columna .texto p{
+        text-align: justify;
+    }
+    body .principal .nuestro_chef .contenedor .columna {
+        width: 100%;
+    }
+    body .principal .nuestro_chef .contenedor .columna .titulo{
+        padding-left: 0;
+        padding-bottom: 0;
+        text-align: center;
+    }
+}
+@media all and (max-width: 580px){
+    body .principal .titulo h2{
+        font-size: 2rem;
+    }
+    body .principal .nosotros .contenedor .columna.derecha .texto p {
+        font-size: 1rem;
+    }
+    body .principal .nuestro_chef .contenedor .columna .titulo p {
+        font-size: 1rem;
+    }
+    body .principal .nuestro_menu .contenedor .menu .contenido .item .columna_izquierda {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0.625rem;
+    }
+    body .principal .nuestro_menu .contenedor .menu .contenido .item .columna_derecha {
+        width: 100%;
+    }
+    body .principal .contacto .formulario .formulario_contacto input[type="submit"]{
+        width: 100%;
+    }
 }
